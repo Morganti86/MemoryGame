@@ -1,0 +1,77 @@
+body {
+  font-family: 'Simpsonfont', sans-serif;
+  text-align: center;
+  /* background-color: #a8e912; */
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  margin: 3% 6%;
+}
+
+h1 {
+  font-size: 80px;
+  margin: 3% 25% 2%;
+}
+
+
+#game_start {
+	/* border: #000 1px solid;  */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 80px;
+  padding-left: 32%;
+  align-items: center;
+}
+
+#start {
+  cursor: pointer;
+}
+
+#start_img{
+  align-items: flex-end;
+}
+
+
+#game_board {
+	/* border: #000 1px solid;  */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+#infoPanel {
+  padding: 0.5rem 2rem;
+  /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05); */
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 25px;
+  padding-right: 50px;
+}
+
+
+#game_board img {
+  display: inline-table;
+  height: 110px;
+  width: 110px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.cardImage {
+  width: 100%;
+}
+
+.paired {
+  box-shadow: 0 0 20px white;
+  background-color: #413a3a;
+  opacity: 0.5;
+
+}
+
+footer {
+  margin-top: 5%;
+}
