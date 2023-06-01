@@ -125,6 +125,7 @@ function initialize() {
     movesAvailable = setMoves(level);
     cardsChosen = [];
     cardsChosenId = [];
+    cardsLeft = [];
     refreshLevel();
     refreshMoves();
 }
@@ -165,12 +166,10 @@ function dealCards() {
         card.setAttribute('cardname', element);
         card.setAttribute('cardid', i);
         card.addEventListener("click", flipCard);
-
         cardsLeft.push(i);
         board.appendChild(card);
-
     })
-    unblockSelections();
+
 };
 
 
@@ -210,7 +209,7 @@ function flipCard() {
         movesAvailable--;
         refreshMoves();
         blockSelections();
-        setTimeout(checkForMatch, 800)
+        setTimeout(checkForMatch, 500)
     }
 }
 
@@ -234,6 +233,7 @@ function checkForMatch() {
     let optionTwo = cardsChosenId[1];
 
     let images = document.querySelectorAll("div#game_board img");
+
     if (cardsChosen[0] === cardsChosen[1]) {
         playSound("yahoo");
         images[optionOne].style.pointerEvents = "none";
@@ -243,25 +243,24 @@ function checkForMatch() {
         images[optionTwo].classList.add("paired");
 
 
-
         let res = cardsLeft.filter(item => ((item != cardsChosenId[0] && item != cardsChosenId[1])))
         cardsLeft = res;
 
         matchedCards++;
-        setTimeout(checkLevelUpdate, 800)
-        setTimeout(checkDefeat, 1000)
-
+        setTimeout(checkLevelUpdate, 600);
 
     } else {
         images[optionOne].style.pointerEvents = "auto";
         images[optionOne].setAttribute('src', 'images/Default.png');
         images[optionTwo].setAttribute('src', 'images/Default.png');
         playSound("ouch");
-        setTimeout(checkDefeat, 1000)
+
     }
+    setTimeout(checkDefeat, 800);
+
     cardsChosen = [];
     cardsChosenId = [];
-    setTimeout(unblockSelections, 300);
+    unblockSelections();
 }
 
 function excludeChoises(element) {
@@ -280,10 +279,10 @@ function checkDefeat() {
             imageAlt: 'Bart Crying image',
             confirmButtonText: "RESTART GAME!",
             confirmButtonColor: 'black'
+            
         })
-        unblockSelections();
         level = 0;
-        nextLevel();
+        setTimeout(nextLevel, 1000)
     }
 };
 
@@ -314,7 +313,6 @@ function checkLevelUpdate() {
         nextLevel();
     }
 };
-
 
 
 // Animations
