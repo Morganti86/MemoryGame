@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Memory Game">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.ico" />
+    <link href="https://fonts.cdnfonts.com/css/simpsonfont" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Memory Game</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.ico">
-  <link href="https://fonts.cdnfonts.com/css/simpsonfont" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> -->
-</head>
-
-<body>
-  <h1>MEMORY GAME</h1>
-  <!-- <h2>Press START to play</h2> -->
-  <div>
+  <body>
+    <h1>MEMORY GAME</h1>
 
     <div id="game_start">
       <div type="button" id="start" class="btn-lg black">PLAY!</div>
-      <img class="start_img" src="https://media.giphy.com/media/gLQ69hVCxAou2y5Xxf/giphy.gif"
-        alt="Nelson img pointing start button" width="350px">
+      <img
+        class="start_img"
+        src="./images/Nelson.webp"
+        alt="Nelson image pointing start button"
+        width="350px" 
+        height="350px"/>
     </div>
 
-  </div>
-  <div id="infoPanel">
-    <p id="level-title"></p>
-    <p id="Moves-left"></p>
-  </div>
+    <div id="infoPanel">
+      <p id="level-title"></p>
+      <p id="Moves-left"></p>
+    </div>
 
-  <div id="game_board"></div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="cards.js"></script>
-  <script src="game.js"></script>
-
-</body>
-<footer>
-  <i>© MORGANTI86</i>
-</footer>
-
+    <div id="game_board"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="cards.js"></script>
+    <script src="game.js"></script>
+  </body>
+  <footer>
+    <span>© MORGANTI86</span>
+  </footer>
 </html>
