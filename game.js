@@ -11,6 +11,9 @@ let level = 0;
 let matchedCards;
 let movesAvailable;
 
+// Flag
+let isProcessing = false;
+
 // Game start
 $("#start").click(function () {
   let startIcon = document.querySelector("#game_start");
@@ -96,17 +99,24 @@ function sortCard() {
 }
 
 function flipCard() {
+  if (isProcessing) {
+    return; // prevent additional clicks while processing
+  }
+
   var cardId = this.getAttribute("cardid");
   var cardName = this.getAttribute("cardname");
 
   cardsChosen.push(cardsSorted[cardId]);
   cardsChosenId.push(cardId);
   this.setAttribute("src", "images/" + cardName + ".png");
+
   if (cardsChosen.length === 1) {
     let images = document.querySelectorAll("div#game_board img");
     images[cardId].style.pointerEvents = "none";
   }
+
   if (cardsChosen.length === 2) {
+    isProcessing = true;
     movesAvailable--;
     refreshMoves();
     blockSelections();
@@ -148,15 +158,21 @@ function checkForMatch() {
     cardsLeft = res;
 
     matchedCards++;
-    setTimeout(checkLevelUpdate, 600);
+    setTimeout(() => {
+      checkLevelUpdate();
+      checkDefeat();
+      isProcessing = false;
+    }, 600);
   } else {
     images[optionOne].style.pointerEvents = "auto";
     images[optionOne].setAttribute("src", "images/Default.png");
     images[optionTwo].setAttribute("src", "images/Default.png");
     playSound("ouch");
+    setTimeout(() => {
+      checkDefeat();
+      isProcessing = false; // Marcar que se ha completado la comparación
+    }, 500);
   }
-  setTimeout(checkDefeat, 800);
-
   cardsChosen = [];
   cardsChosenId = [];
   unblockSelections();
@@ -193,7 +209,7 @@ function checkLevelUpdate() {
         title: "GAME COMPLETED!",
         imageUrl: "./images/Lisa.webp", //LISA
         imageHeight: 300,
-        imageAlt: "Homer celebrating image",
+        imageAlt: "Lisa celebrating image",
         confirmButtonText: "PLAY AGAIN!",
         confirmButtonColor: "black",
       });
