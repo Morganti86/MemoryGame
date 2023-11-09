@@ -1,6 +1,7 @@
 // Cards & choices
 let board = document.querySelector("#game_board");
 
+let images = [];
 let cardsSorted = [];
 let cardsChosen = [];
 let cardsChosenId = [];
@@ -18,6 +19,9 @@ let isProcessing = false;
 function preloadImages() {
   for (let i = 0; i < CARDS.length; i++) {
     const image = new Image();
+    const cardName = CARDS[i].name;
+    image.src = "images/" + cardName + ".png";
+    images.push({ name: cardName, image: image });
   }
 }
 
@@ -25,13 +29,13 @@ function preloadImages() {
 $("#start").click(function () {
   let startIcon = document.querySelector("#game_start");
   startIcon.style.display = "none";
+  preloadImages();
   nextLevel();
 });
 
 // Game
 function nextLevel() {
   initialize();
-  preloadImages();
   dealCards();
 }
 
@@ -116,7 +120,11 @@ function flipCard() {
 
   cardsChosen.push(cardsSorted[cardId]);
   cardsChosenId.push(cardId);
-  this.setAttribute("src", "images/" + cardName + ".png");
+  // this.setAttribute("src", "images/" + cardName + ".png");
+  this.setAttribute(
+    "src",
+    images.find((img) => img.name === cardName).image.src
+  );
 
   if (cardsChosen.length === 1) {
     let images = document.querySelectorAll("div#game_board img");
