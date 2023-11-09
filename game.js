@@ -14,10 +14,18 @@ let movesAvailable;
 // Flag
 let isProcessing = false;
 
+// Preload images
+function preloadImages() {
+  for (let i = 0; i < CARDS.length; i++) {
+    const image = new Image();
+  }
+}
+
 // Game start
 $("#start").click(function () {
   let startIcon = document.querySelector("#game_start");
   startIcon.style.display = "none";
+  preloadImages();
   nextLevel();
 });
 
@@ -170,7 +178,7 @@ function checkForMatch() {
     playSound("ouch");
     setTimeout(() => {
       checkDefeat();
-      isProcessing = false; // Marcar que se ha completado la comparación
+      isProcessing = false;
     }, 500);
   }
   cardsChosen = [];
