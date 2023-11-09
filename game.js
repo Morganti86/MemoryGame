@@ -25,13 +25,13 @@ function preloadImages() {
 $("#start").click(function () {
   let startIcon = document.querySelector("#game_start");
   startIcon.style.display = "none";
-  preloadImages();
   nextLevel();
 });
 
 // Game
 function nextLevel() {
   initialize();
+  preloadImages();
   dealCards();
 }
 
