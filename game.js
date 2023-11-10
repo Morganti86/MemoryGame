@@ -2,6 +2,7 @@
 let board = document.querySelector("#game_board");
 
 let images = [];
+let audios = [];
 let cardsSorted = [];
 let cardsChosen = [];
 let cardsChosenId = [];
@@ -15,7 +16,7 @@ let movesAvailable;
 // Flag
 let isProcessing = false;
 
-// Preload images
+// Preload images & sounds
 function preloadImages() {
   for (let i = 0; i < CARDS.length; i++) {
     const image = new Image();
@@ -24,12 +25,21 @@ function preloadImages() {
     images.push({ name: cardName, image: image });
   }
 }
+function preloadAudios() {
+  for (let i = 0; i < AUDIO.length; i++) {
+    const audio = new Audio();
+    const audioName = AUDIO[i].name;
+    audio.src = "sounds/" + AUDIO[i].name;
+    audios.push({ name: audioName, audio: audio });
+  }
+}
 
 // Game start
 $("#start").click(function () {
   let startIcon = document.querySelector("#game_start");
   startIcon.style.display = "none";
   preloadImages();
+  preloadAudios();
   nextLevel();
 });
 
@@ -161,7 +171,7 @@ function checkForMatch() {
   let images = document.querySelectorAll("div#game_board img");
 
   if (cardsChosen[0] === cardsChosen[1]) {
-    playSound("yahoo");
+    playSound("yahoo.mp3");
     images[optionOne].style.pointerEvents = "none";
     images[optionTwo].style.pointerEvents = "none";
 
@@ -183,7 +193,7 @@ function checkForMatch() {
     images[optionOne].style.pointerEvents = "auto";
     images[optionOne].setAttribute("src", "images/Default.png");
     images[optionTwo].setAttribute("src", "images/Default.png");
-    playSound("ouch");
+    playSound("ouch.mp3");
     setTimeout(() => {
       checkDefeat();
       isProcessing = false;
@@ -237,8 +247,10 @@ function checkLevelUpdate() {
 }
 
 function playSound(name) {
-  var audio = new Audio("sounds/" + name + ".mp3");
-  audio.play();
+  const sound = audios.find((audio) => audio.name === name);
+  if (sound) {
+    sound.audio.play();
+  }
 }
 
 function refreshLevel() {
