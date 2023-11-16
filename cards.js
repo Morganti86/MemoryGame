@@ -76,3 +76,15 @@ const CARDS = [
     name: "Scratchy",
   },
 ];
+
+const MODAL = [
+  {
+    name: "Champion",
+  },
+  {
+    name: "Lose",
+  },
+  {
+    name: "Win",
+  },
+];

@@ -2,6 +2,7 @@
 let board = document.querySelector("#game_board");
 
 let images = [];
+let imagesModal = [];
 let audios = [];
 let cardsSorted = [];
 let cardsChosen = [];
@@ -24,7 +25,15 @@ function preloadImages() {
     image.src = "images/" + cardName + ".png";
     images.push({ name: cardName, image: image });
   }
+
+  for (let i = 0; i < MODAL.length; i++) {
+    const image = new Image();
+    const cardName = MODAL[i].name;
+    image.src = "images/" + cardName + ".webp";
+    imagesModal.push({ name: cardName, image: image });
+  }
 }
+
 function preloadAudios() {
   for (let i = 0; i < AUDIO.length; i++) {
     const audio = new Audio();
@@ -208,7 +217,7 @@ function checkDefeat() {
   if (movesAvailable === 0) {
     Swal.fire({
       title: "YOU LOST!",
-      imageUrl: "./images/Bart.webp", //BART
+      imageUrl: imagesModal.find((img) => img.name === "Lose").image.src,
       imageHeight: 300,
       imageAlt: "Bart Crying image",
       confirmButtonText: "RESTART GAME!",
@@ -224,7 +233,7 @@ function checkLevelUpdate() {
     if (level != 5) {
       Swal.fire({
         title: "LEVEL " + level + " COMPLETED!",
-        imageUrl: "./images/Homer.webp", //HOMER
+        imageUrl: imagesModal.find((img) => img.name === "Win").image.src,
         imageHeight: 300,
         imageAlt: "Homer celebrating image",
         confirmButtonText: "NEXT LEVEL!",
@@ -233,7 +242,7 @@ function checkLevelUpdate() {
     } else {
       Swal.fire({
         title: "GAME COMPLETED!",
-        imageUrl: "./images/Lisa.webp", //LISA
+        imageUrl: imagesModal.find((img) => img.name === "Champion").image.src,
         imageHeight: 300,
         imageAlt: "Lisa celebrating image",
         confirmButtonText: "PLAY AGAIN!",
