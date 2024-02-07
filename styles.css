@@ -13,6 +13,12 @@ h1 {
   margin: 0% 25% 5%;
 }
 
+h3 {
+  display: none;
+  font-size: 60px;
+  /* margin: 0% 25% 5%; */
+}
+
 #game_start {
   font-size: 80px;
   align-items: center;
@@ -29,6 +35,7 @@ h1 {
   grid-template-columns: repeat(10, 1fr);
   gap: 10px;
   width: 100%;
+  min-height: 100px;
 }
 
 #infoPanel {
@@ -62,6 +69,10 @@ footer {
 @media (max-width: 500px) {
   h1 {
     font-size: 30px;
+  }
+
+  h3 {
+    font-size: 20px;
   }
 
   #game_start {

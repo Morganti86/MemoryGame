@@ -47,6 +47,8 @@ function preloadAudios() {
 $("#start").click(function () {
   let startIcon = document.querySelector("#game_start");
   startIcon.style.display = "none";
+  document.getElementById("subtitle").style.display = "block";
+  console.log(subtitle);
   preloadImages();
   preloadAudios();
   nextLevel();
