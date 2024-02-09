@@ -10,7 +10,7 @@ body {
 
 h1 {
   font-size: 80px;
-  margin: 0% 25% 5%;
+  margin: 2% 25% 5%;
 }
 
 h3 {
@@ -32,7 +32,7 @@ h3 {
 }
 
 #game_board {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(10, 1fr);
   gap: 10px;
   width: 100%;
@@ -44,6 +44,11 @@ h3 {
   display: flex;
   justify-content: space-between;
   font-size: 25px;
+}
+
+#level-title,
+#Moves-left {
+  display: none;
 }
 
 #game_board img {
@@ -88,6 +93,7 @@ footer {
   #infoPanel {
     font-size: 10px;
   }
+  
   #game_board {
     grid-template-columns: repeat(5, 1fr);
   }
