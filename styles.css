@@ -5,19 +5,18 @@ body {
   background-color: white;
   color: black;
   font-weight: 600;
-  margin: 3% 5%;
+  margin: 5%;
 }
 
 h1 {
   font-size: 80px;
-  margin: 2% 25% 5%;
+  margin: 5% 25% 2%;
 }
 
 h3 {
   display: none;
   font-size: 50px;
   text-transform: uppercase;
-  /* margin: 0% 25% 5%; */
 }
 
 #game_start {

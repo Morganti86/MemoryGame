@@ -49,9 +49,9 @@ $("#start").click(function () {
   startIcon.style.display = "none";
   document.getElementById("level-title").style.display = "block";
   document.getElementById("Moves-left").style.display = "block";
+  document.getElementById("subtitle").style.display = "block";
   document.getElementById("game_board").style.display = "grid";
 
-  console.log(subtitle);
   preloadImages();
   preloadAudios();
   nextLevel();
